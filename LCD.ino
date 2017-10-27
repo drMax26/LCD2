@@ -46,6 +46,12 @@ byte DayOfWeekShort[7][2]{{193, 240},{206, 236},{193, 241},{208, 239},{214, 241}
 
 byte Last_Minutes = 255;
 
+byte Hour = 255;
+byte Minute = 255;
+byte Day = 255;
+byte Month = 255;
+int Year = 255;
+
 void setup() {
   // put your setup code here, to run once:
   //Serial.begin(9600);
