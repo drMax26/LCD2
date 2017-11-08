@@ -3,12 +3,9 @@
 #include <Wire.h>
 #include <SPI.h>
 #include "RTClib.h"
-
-
-#include "DHT.h"
-#define DHTPIN 2 // номер пина, к которому подсоединен датчик
-DHT dht;
-
+/*****************
+ 
+ */
 #include <OneWire.h>
 OneWire ds(3);
 
@@ -54,14 +51,25 @@ int Year = 255;
 
 void setup() {
   // put your setup code here, to run once:
-  //Serial.begin(9600);
-  //Serial.print("Hello! Adafruit ST7735 rotation test");
+  Serial.begin(9600);
+  Serial.println("Hello! Adafruit ST7735 rotation test");
 
   Wire.begin(); // Start the I2C
   RTC.begin();  // Init RTC
   //RTC.adjust(DateTime(__DATE__, __TIME__));  // Time and date is expanded to date and time on your computer at compiletime
+  time.settime(0,51,21,27,10,15,2); 
+  /*
+  Serial.println(__DATE__);
+  Serial.println(__TIME__);
 
-  dht.setup(DHTPIN);
+Serial.print( F("Compiled: "));
+Serial.print( F(__DATE__));
+Serial.print( F(", "));
+Serial.print( F(__TIME__));
+Serial.print( F(", "));
+Serial.println( F(__VERSION__));
+  */
+//  dht.setup(DHTPIN);
 
   // Use this initializer if you're using a 1.8" TFT
   tft.initR(INITR_BLACKTAB);   // initialize a ST7735S chip, black tab
@@ -178,6 +186,7 @@ byte DayOfWeek(int y, byte m, byte d)
 
 void ShowTemp(byte x, byte y)
 {
+    /*
     float DHT_humidity = dht.getHumidity();
     float DHT_temperature = dht.getTemperature();
 
@@ -221,6 +230,7 @@ void ShowTemp(byte x, byte y)
     tft.print(DHT_temperature, 2);
     tft.setTextColor(ST7735_WHITE);
     tft.print(char(128));
+    /**/
 }
 
 void ShowTemp18b20(byte x, byte y)
